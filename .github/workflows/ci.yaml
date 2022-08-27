@@ -73,7 +73,7 @@ jobs:
           args: '--ignore-tests'
 
   build:
-    name: Build Binary
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
