@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 poise = { version = "0.3.0" }
+tokio = { version = "1.4.0", features = ["rt-multi-thread"] } # for async in general
