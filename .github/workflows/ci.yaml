@@ -117,7 +117,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: target-release-pincey-${{ matrix.target }}
-          path: target/release/pincey
+          path: target/*
 
   deploy:
     needs:
@@ -131,6 +131,5 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: target-release-pincey-x86_64-unknown-linux-gnu
-          path: target/release/pincey
 
       - run: flyctl deploy
