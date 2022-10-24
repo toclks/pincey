@@ -1,5 +1,3 @@
-#![warn(clippy::str_to_string)]
-
 use crate::{Context, Error};
 use poise::serenity_prelude as serenity;
 use std::fmt::Write as _;

@@ -1,4 +1,4 @@
-#![warn(clippy::str_to_string)]
+#[allow(clippy::str_to_string)]
 
 mod commands;
 use commands::*;
