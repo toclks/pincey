@@ -1,9 +1,10 @@
 name: Rust
 
-on: [push, pull_request]
+on: push
 
 env:
   CARGO_TERM_COLOR: always
+  FLY_API_TOKEN: ${{ secrets.FLY_API_TOKEN }}
 
 jobs:
   test:
@@ -111,3 +112,25 @@ jobs:
         with:
           command: build
           args: --release --target ${{ matrix.target }}
+
+      - name: Upload binary
+        uses: actions/upload-artifact@v3
+        with:
+          name: target-release-pincey-${{ matrix.target }}
+          path: target/release/pincey
+
+  deploy:
+    needs:
+    - build
+    name: Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: superfly/flyctl-actions/setup-flyctl@master
+      - name: Download a single artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: target-release-pincey-x86_64-unknown-linux-gnu
+          path: target/release/pincey
+
+      - run: flyctl deploy
