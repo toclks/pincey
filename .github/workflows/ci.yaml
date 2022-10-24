@@ -78,12 +78,18 @@ jobs:
     strategy:
       matrix:
         include:
-        - build: aarch64
+        - build: x86_64
           os: ubuntu-latest
           rust: stable
-          target: aarch64-unknown-linux-gnu
-          linker: gcc-aarch64-linux-gnu
-          cross: true
+          target: x86_64-unknown-linux-gnu
+          linker: gcc-x86_64-linux-gnu
+          cross: false
+        # - build: aarch64
+        #   os: ubuntu-latest
+        #   rust: stable
+        #   target: aarch64-unknown-linux-gnu
+        #   linker: gcc-aarch64-linux-gnu
+        #   cross: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
