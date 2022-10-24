@@ -143,7 +143,10 @@ async fn main() {
     };
 
     poise::Framework::builder()
-        .token(var("GITHUB_TOKEN").expect("Missing `GITHUB_TOKEN` env var, see README for more information."))
+        .token(
+            var("DISCORD_TOKEN")
+                .expect("Missing `DISCORD_TOKEN` env var, see README for more information."),
+        )
         .user_data_setup(move |_ctx, _ready, _framework| {
             Box::pin(async move {
                 Ok(Data {
