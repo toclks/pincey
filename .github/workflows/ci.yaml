@@ -131,5 +131,6 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: target-release-pincey-x86_64-unknown-linux-gnu
-
-      - run: flyctl deploy
+      - run: ls
+      - run: ls target/
+      - run: flyctl deploy --remote-only
